@@ -1,3 +1,22 @@
-<div>
-    Data should be displayed here
-</div>
+<section id="product-list">
+        <article class="card product" *ngFor="let product of products">
+            <header>
+                <h1>{{product.name}}</h1>
+                
+                <div class="brand" ngSwitch={{product.brandName}}>
+                    <img src="https://www.commbank.com.au/developer/static/media/commbank.b4eca2cd.svg" height="24px" width="24px" *ngSwitchCase="'CommBank'" />
+                    <span>{{product.brandName}}</span>
+                </div>
+               
+            </header>
+            <p>{{product.description}}</p>
+            <footer>
+                <div class="product-category" ngSwitch={{product.productCategory}}>
+                    <span *ngSwitchCase="'TRANS_AND_SAVINGS_ACCOUNTS'">💎 Saving Accounts</span>
+                    <span *ngSwitchCase="'TERM_DEPOSITS'">💰 Term Deposits</span>
+                    <span *ngSwitchCase="'CRED_AND_CHRG_CARDS'">💳 Credit/Charge Cards</span>
+                    <span *ngSwitchDefault="">🌱 Other Saving</span>
+                </div>
+            </footer>
+        </article>
+</section>
