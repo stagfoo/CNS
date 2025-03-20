@@ -72,7 +72,8 @@
               "browserTarget": "cns-coding-test:build:production"
             },
             "development": {
-              "browserTarget": "cns-coding-test:build:development"
+              "browserTarget": "cns-coding-test:build:development",
+              "ssl": true
             }
           },
           "defaultConfiguration": "development"

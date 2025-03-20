@@ -1,0 +1,11 @@
+{
+    "/products": {
+        "target": "https://api.commbank.com.au/public/cds-au/v1/banking/products",
+        "secure": true,
+        "pathRewrite": {
+            "^/products": ""
+        },
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}
