@@ -1,4 +1,8 @@
 <section id="product-list">
+    <mat-card class="error" *ngIf="error.hasError">
+        <h1>Oops! Something went wrong</h1>
+        <p>{{error.message}}</p>
+    </mat-card>
     <mat-card class="product" *ngFor="let product of products">
         <div>
         <mat-card-header>

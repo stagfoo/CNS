@@ -47,3 +47,11 @@
         @include mat.elevation(4);
     }
 }
+
+.error {
+    display:flex;
+    flex-direction: column;
+    width: 30vw;
+    background-color: mat.get-color-from-palette(mat.$red-palette, 50);
+    color: mat.get-color-from-palette(mat.$red-palette, A200);
+}
