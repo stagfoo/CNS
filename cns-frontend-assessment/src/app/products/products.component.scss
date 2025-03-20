@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+
+.product .brand {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.product .product-category {
+    align-self: flex-end;
+}
+
+.product mat-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product p {
+    padding: 8px 0px;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 16px;
+    gap: 16px;
+}
+
+#product-list .product {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 28vw;
+    justify-content: space-between;
+
+    @include mat.elevation-transition();
+    @include mat.elevation(2);
+
+    &:hover {
+        @include mat.elevation(4);
+    }
+}
