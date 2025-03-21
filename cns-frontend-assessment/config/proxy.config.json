@@ -1,9 +1,9 @@
 {
-    "/products": {
-        "target": "https://api.commbank.com.au/public/cds-au/v1/banking/products",
-        "secure": true,
+    "/api": {
+        "target": "http://localhost:3000",
+        "secure": false,
         "pathRewrite": {
-            "^/products": ""
+            "^/api": ""
         },
         "logLevel": "debug",
         "changeOrigin": true
