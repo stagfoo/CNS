@@ -1,5 +1,9 @@
 @use '@angular/material' as mat;
 
+
+.product {
+    cursor: pointer;
+}
 .product .brand {
     display: flex;
     justify-content: flex-start;
@@ -22,6 +26,10 @@
     padding: 8px 0px;
     line-height: 1.6;
     opacity: 0.8;
+}
+.product a {
+    text-decoration: none;
+    color: inherit;
 }
 
 #product-list {
@@ -54,4 +62,31 @@
     width: 30vw;
     background-color: mat.get-color-from-palette(mat.$red-palette, 50);
     color: mat.get-color-from-palette(mat.$red-palette, A200);
+}
+
+.product.selected {
+    height: 300px;
+    width: 600px;
+    overflow: scroll;
+    margin: 18px auto;
+    position: relative;
+}
+
+.product.selected button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 1;
+    font-size: large;
+}
+
+.loading {
+    height: 300px;
+    width: 600px;
+    overflow: scroll;
+    display: flex;;
+    justify-content: center;
+    align-items: center;
+    margin: 18px auto;
+    position: relative;
 }

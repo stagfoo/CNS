@@ -1,26 +1,37 @@
+<div  class="loading" *ngIf="loading">
+    <mat-spinner ></mat-spinner>
+</div>
+<mat-card class="product selected" *ngIf="selectedProduct">
+    <h1>Selected Product</h1>
+    <pre>{{selectedProduct | json}}</pre>
+    <button (click)="onCloseProductDetails()">Close</button>
+</mat-card>
 <section id="product-list">
     <mat-card class="error" *ngIf="error.hasError">
         <h1>Oops! Something went wrong</h1>
         <p>{{error.message}}</p>
     </mat-card>
     <mat-card class="product" *ngFor="let product of products">
-        <div>
+            <div (click)="onProductClick(product)">
         <mat-card-header>
             <h1>{{product.name}}</h1>
 
-            <div class="brand" ngSwitch={{product.brandName}}>
+            <div class="brand" ngSwitch={{product.brand}}>
                 <img src="https://www.commbank.com.au/developer/static/media/commbank.b4eca2cd.svg" height="24px"
                     width="24px" *ngSwitchCase="'CommBank'" />
-                <span>{{product.brandName}}</span>
+                <img src="https://www.commbank.com.au/developer/static/media/commbank.b4eca2cd.svg" height="24px"
+                width="24px" *ngSwitchCase="'CBA'" />
+                <span>{{product.brand}}</span>
             </div>
         </mat-card-header>
         <p>{{product.description}}</p>
     </div>
-        <div class="product-category" ngSwitch={{product.productCategory}}>
+        <div class="product-category" ngSwitch={{product.product_category}}>
             <span *ngSwitchCase="'TRANS_AND_SAVINGS_ACCOUNTS'">💎 Saving Accounts</span>
             <span *ngSwitchCase="'TERM_DEPOSITS'">💰 Term Deposits</span>
             <span *ngSwitchCase="'CRED_AND_CHRG_CARDS'">💳 Credit/Charge Cards</span>
             <span *ngSwitchDefault="">🌱 Other Saving</span>
         </div>
     </mat-card>
-</section>
+</section> 
+
