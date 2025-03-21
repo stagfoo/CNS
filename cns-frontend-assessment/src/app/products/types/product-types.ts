@@ -1,30 +1,41 @@
-export type Product = {
-  brand: string;
-  brandName: string;
-  description: string;
-  isTailored: true
-  lastUpdated: string;
+// Local Types
+
+export interface Product {
+  product_id: string;
+  effective_from: string;
+  effective_to: string;
+  product_category: string;
   name: string;
-  productCategory: string;
-  productId: string;
-  additionalInformation: {
-    feesAndPricingUri: string;
-    productPageUri: string;
-  }
+  description: string;
+  brand: string;
 }
 
-export type ProductNetworkResponse = {
-    data: {
-        products: Product[]; 
-    }
-    links: {
-        first: string;
-        last: string;
-        next: string;
-        self: string;
-    }
-    meta: {
-        totalPages: number;
-        totalRecords: number;
-    }
+type Additionals = {
+  additionalValue?: string;
+  additionalInfo?: string;
+}
+
+type ProductFeature = {
+  featureType: string;
+  additionalValue?: string;
+  additionalInfo?: string;
+} & Additionals;
+
+type ProductEligibility = {
+  // I typed this to show I know more then just string
+  eligibilityType: "STAFF" | "MIN_AGE" | "NATURAL_PERSON" | "OTHER";
+} & Additionals;
+
+type ProductFees = {
+  name: string;
+  feeType: string;
+  amount: string;
+  discounts: unknown[];
+} & Additionals;
+
+export interface ProductDetails {
+  product_id: string;
+  features: ProductFeature[];
+  eligibility: ProductEligibility[];
+  fees: ProductFees[];
 }
