@@ -1,6 +1,6 @@
 import { describe } from '@jest/globals';
 import { getProducts, getProductDetails } from '../lib/products';
-
+import axios from 'axios';
 describe('Products E2E tests', () => {
     describe('getProducts', () => {
         it('returns a promise', () => {
@@ -19,7 +19,25 @@ describe('Products E2E tests', () => {
             expect(product).toHaveProperty('description');
             expect(product).toHaveProperty('brand');
         });
+        it('can handles errors', async () => {
+            const mockAxios = jest.spyOn(axios, 'get');
+            mockAxios.mockRejectedValue({
+                response: {
+                    status: 404,
+                    data: { errors: [{ message: 'Products endpoint missing' }] },
+                },
+            });
+
+            await expect(getProducts()).rejects.toEqual({
+                status: 404,
+                error: [{ message: 'Products endpoint missing' }],
+                message: 'Failed to fetch products',
+            });
+
+            mockAxios.mockRestore();
+        });
     });
+
 
     describe('getProductDetails', () => {
         it('returns a promise', () => {
@@ -33,5 +51,23 @@ describe('Products E2E tests', () => {
             expect(productDetails).toHaveProperty('eligibility');
             expect(productDetails).toHaveProperty('fees');
         })
+    it('can handles errors correctly', async () => {
+        const mockAxios = jest.spyOn(axios, 'get');
+        mockAxios.mockRejectedValue({
+            response: {
+                status: 404,
+                data: { errors: [{ message: 'Product not found' }] },
+            },
+        });
+
+        await expect(getProductDetails('invalid-id')).rejects.toEqual({
+            status: 404,
+            error: [{ message: 'Product not found' }],
+            message: 'Failed to fetch single product [invalid-id]',
+        });
+
+        mockAxios.mockRestore();
     });
+});
+
 });
