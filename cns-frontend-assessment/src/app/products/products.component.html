@@ -1,4 +1,8 @@
-<div  class="loading" *ngIf="loading">
+<mat-card class="error" *ngIf="error.hasError">
+    <h1>Oops! Something went wrong</h1>
+    <p>{{error.message}}</p>
+</mat-card>
+<div  class="loading" *ngIf="loading && !error.hasError">
     <mat-spinner ></mat-spinner>
 </div>
 <mat-card class="product selected" *ngIf="selectedProduct">
@@ -7,10 +11,7 @@
     <button (click)="onCloseProductDetails()">Close</button>
 </mat-card>
 <section id="product-list">
-    <mat-card class="error" *ngIf="error.hasError">
-        <h1>Oops! Something went wrong</h1>
-        <p>{{error.message}}</p>
-    </mat-card>
+    
     <mat-card class="product" *ngFor="let product of products">
             <div (click)="onProductClick(product)">
         <mat-card-header>
