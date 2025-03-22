@@ -1,15 +1,43 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
+
+@Component({
+  selector: 'app-products',
+  template: '<div></div>',
+})
+class MockProductsComponent {}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatListModule,
+        MatCardModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatToolbarModule,
+        MatProgressSpinnerModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MockProductsComponent
       ],
     }).compileComponents();
   });
@@ -30,6 +58,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('cns-coding-test app is running!');
+    expect((compiled.querySelector('mat-toolbar') as HTMLElement)?.innerText).toContain("Canstar Frontend Assessment" );
   });
 });
