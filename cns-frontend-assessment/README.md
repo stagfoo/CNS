@@ -2,8 +2,7 @@
 
 ## Task
 
-This application currently contains boilerplate code for an Angular app. Your task is to add code to necessary files in order to display data consumed from a provided API in some 
-meaningful way, this could be a list or table for example. 
+This application currently contains boilerplate code for an Angular app. Your task is to add code to necessary files in order to display data consumed from a provided API in some meaningful way, this could be a list or table for example. 
 
 The `products` directory has been created to contain the products component (how data will be displayed), and the `services` directory has been created to contain the code to 
 consume the data (also includes the API endpoint).
