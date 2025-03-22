@@ -25,3 +25,13 @@ export function productDetailsNormalizer(product: NetworkProductDetails): Produc
         fees: product.fees
     }
 }
+
+export function errorNormalizer(error: any, defaultMessage: string) {
+    const status = error?.response?.status || 500;
+    const errors = error?.response?.data?.errors || [{ message: defaultMessage }];
+    return {
+        status,
+        error: errors,
+        message: defaultMessage,
+    };
+}
