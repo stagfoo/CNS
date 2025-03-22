@@ -50,6 +50,8 @@ export class ProductsComponent implements OnInit {
         return [];
       })
     ).subscribe((response) => {
+      //Scroll to top of the page to show the product details
+      window.scrollTo(0, 0);
       this.selectedProduct = response;
       this.loading = false;
     });
